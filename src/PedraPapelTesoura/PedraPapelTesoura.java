@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package PedraPapelTesoura;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,15 +16,14 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
     String nomeJogadorEscolha, nomeIaEscolha;
         int escolhaMaq, jogadorVitoria, iaVitoria, jogadorDerrota, 
                 iaDerrota, empate;
+        boolean infinito;
     
     /**
      * Creates new form PedraPapelTesoura
      */
     public PedraPapelTesoura() {
         initComponents();
-        setTitle("Pedra, Papel e Tesoura");
-        
-        
+        setTitle("Jokenpo Game");
     }
     
     public JLabel escolhaIaLabel = new JLabel();
@@ -39,6 +38,8 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         papelMiniaturapng = new javax.swing.JLabel();
         pedraMiniaturapng = new javax.swing.JLabel();
         tesouraMiniaturapng = new javax.swing.JLabel();
@@ -47,8 +48,13 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         iatxt = new javax.swing.JLabel();
         playerVitoriastxt = new javax.swing.JLabel();
         computadorVitoriastxt = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        empatestxt = new javax.swing.JLabel();
+        infinitobtn = new javax.swing.JCheckBox();
+        vocetxt1 = new javax.swing.JLabel();
+        empatetxt = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,9 +90,11 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         });
 
         vocetxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        vocetxt.setForeground(new java.awt.Color(0, 153, 102));
         vocetxt.setText("PLAYER");
 
         iatxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        iatxt.setForeground(new java.awt.Color(255, 0, 51));
         iatxt.setText("COMPUTADOR");
 
         playerVitoriastxt.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -95,11 +103,18 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         computadorVitoriastxt.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         computadorVitoriastxt.setText("0");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("EMPATES");
+        infinitobtn.setText("Infinito");
+        infinitobtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infinitobtnActionPerformed(evt);
+            }
+        });
 
-        empatestxt.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        empatestxt.setText("0");
+        vocetxt1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        vocetxt1.setText("EMPATE");
+
+        empatetxt.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        empatetxt.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,37 +123,42 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(computadorVitoriastxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(236, 236, 236)
-                        .addComponent(empatestxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(236, 236, 236)
-                        .addComponent(playerVitoriastxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(iatxt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(pedraMiniaturapng)
                                 .addGap(46, 46, 46)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(finalizarbtn, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(papelMiniaturapng)))
+                                .addGap(4, 4, 4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(vocetxt1)
+                                    .addComponent(papelMiniaturapng))
+                                .addGap(9, 9, 9)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(189, 189, 189)
                                 .addComponent(vocetxt))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
-                                .addComponent(tesouraMiniaturapng)))))
+                                .addComponent(tesouraMiniaturapng))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(infinitobtn)))
                 .addGap(21, 21, 21))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(computadorVitoriastxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(empatetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(244, 244, 244)
+                .addComponent(playerVitoriastxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,22 +167,27 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vocetxt)
                     .addComponent(iatxt)
-                    .addComponent(jLabel1))
+                    .addComponent(vocetxt1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(playerVitoriastxt)
                     .addComponent(computadorVitoriastxt)
-                    .addComponent(empatestxt))
+                    .addComponent(empatetxt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(tesouraMiniaturapng)
-                        .addGap(6, 6, 6))
-                    .addComponent(pedraMiniaturapng, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(papelMiniaturapng, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addComponent(finalizarbtn)
-                .addGap(29, 29, 29))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(tesouraMiniaturapng)
+                                .addGap(6, 6, 6))
+                            .addComponent(pedraMiniaturapng, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(papelMiniaturapng, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addComponent(finalizarbtn)
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(infinitobtn)
+                        .addContainerGap())))
         );
 
         pack();
@@ -173,16 +198,52 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
                 (nomeJogadorEscolha.equals("PAPEL") && nomeIaEscolha.equals("PEDRA")) ||
                 (nomeJogadorEscolha.equals("TESOURA") && nomeIaEscolha.equals("PAPEL"))) {
             jogadorVitoria++;
-            playerVitoriastxt.setText(String.valueOf(jogadorVitoria));
+            playerVitoriastxt.setText(String.valueOf(jogadorVitoria)); 
+            
+            melhorDeTres();
+            
         } else if ((nomeIaEscolha.equals("PEDRA") && nomeJogadorEscolha.equals("TESOURA")) ||
                 (nomeIaEscolha.equals("PAPEL") && nomeJogadorEscolha.equals("PEDRA")) ||
                 (nomeIaEscolha.equals("TESOURA") && nomeJogadorEscolha.equals("PAPEL"))) {
             iaVitoria++;
             computadorVitoriastxt.setText(String.valueOf(iaVitoria));
+            
+            melhorDeTres();
+            
         } else {
             empate++;
-            empatestxt.setText(String.valueOf(empate));
+            empatetxt.setText(String.valueOf(empate));
+            
+            melhorDeTres();
         }
+    }
+    
+    public void melhorDeTres() {
+        
+        if (infinito == false) {
+            
+            if (jogadorVitoria > 2) {
+                JOptionPane.showMessageDialog(null, "Jogador Venceu!");
+                 resetarPontos();
+            } else if (iaVitoria > 2) {
+                JOptionPane.showMessageDialog(null, "Computador Venceu!");
+                resetarPontos();
+            } else if (empate > 2) {
+                JOptionPane.showMessageDialog(null, "Empate, que sorte!");
+                resetarPontos();
+            }
+            
+        } 
+        
+    }
+    
+    public void resetarPontos() {
+        jogadorVitoria = 0;
+        playerVitoriastxt.setText(String.valueOf(jogadorVitoria)); 
+        iaVitoria = 0;
+        computadorVitoriastxt.setText(String.valueOf(iaVitoria));
+        empate = 0;
+        empatetxt.setText(String.valueOf(empate));
     }
     
     public void posicionarJogada() {
@@ -276,6 +337,10 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_finalizarbtnActionPerformed
 
+    private void infinitobtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infinitobtnActionPerformed
+        infinito = infinitobtn.isSelected();
+    }//GEN-LAST:event_infinitobtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,14 +378,17 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel computadorVitoriastxt;
-    private javax.swing.JLabel empatestxt;
+    private javax.swing.JLabel empatetxt;
     private javax.swing.JButton finalizarbtn;
     private javax.swing.JLabel iatxt;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JCheckBox infinitobtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel papelMiniaturapng;
     private javax.swing.JLabel pedraMiniaturapng;
     private javax.swing.JLabel playerVitoriastxt;
     private javax.swing.JLabel tesouraMiniaturapng;
     private javax.swing.JLabel vocetxt;
+    private javax.swing.JLabel vocetxt1;
     // End of variables declaration//GEN-END:variables
 }
