@@ -199,6 +199,7 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
                 (nomeJogadorEscolha.equals("TESOURA") && nomeIaEscolha.equals("PAPEL"))) {
             jogadorVitoria++;
             playerVitoriastxt.setText(String.valueOf(jogadorVitoria)); 
+            // Possibilidades de vitória do jogador
             
             melhorDeTres();
             
@@ -207,18 +208,21 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
                 (nomeIaEscolha.equals("TESOURA") && nomeJogadorEscolha.equals("PAPEL"))) {
             iaVitoria++;
             computadorVitoriastxt.setText(String.valueOf(iaVitoria));
+            // Possibilidade de vitória do computador
             
             melhorDeTres();
             
         } else {
             empate++;
             empatetxt.setText(String.valueOf(empate));
+            // Empate
             
             melhorDeTres();
         }
     }
     
     public void melhorDeTres() {
+        // Método para se o jogo for melhor de três e não infinito
         
         if (infinito == false) {
             
@@ -238,6 +242,8 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
     }
     
     public void resetarPontos() {
+        // Metódos que reseta o placar
+        
         jogadorVitoria = 0;
         playerVitoriastxt.setText(String.valueOf(jogadorVitoria)); 
         iaVitoria = 0;
@@ -247,6 +253,8 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
     }
     
     public void posicionarJogada() {
+        // Posiciona a imagem de acordo com a escolha do computador
+        
         getContentPane().setLayout(null);
         
         if(escolhaIaLabel != null) {
@@ -264,6 +272,8 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
     }
     
     public String escolherJogadaIa() {
+        // Escolhe a jogada do computador
+        
         escolhaMaq = 1 + (int)(Math.random() * 3);
         
         switch (escolhaMaq) {
@@ -281,12 +291,16 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
     }
     
     public void verificarImagem() {
+        // Método que redefine a imagem antiga pela nova
+        
         if (jogadaAtualLabel != null) {
         getContentPane().remove(jogadaAtualLabel);
         }
     }
     
     public void inserirImagemJogador(String nomeJogadorEscolha) {
+        // Método que insere a imagem do jogador
+        
         jogadaAtualLabel.setText("");
         jogadaAtualLabel.setIcon(new ImageIcon(getClass().getResource("/img/"+nomeJogadorEscolha+".png"))); 
         
